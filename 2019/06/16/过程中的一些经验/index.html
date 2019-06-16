@@ -6,12 +6,12 @@
   <meta name="author" content="Dong Yuanxin">
   
   
-  <title>分类: 技术相关 | my-home</title>
+  <title>过程中的一些经验 | my-home</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="Hexo, Theme-AD">
+    <meta name="keywords" content="技术相关,Java,">
   
 
   
@@ -38,7 +38,7 @@
     welcome: {"enable":false,"interval":30},
     start_time: "2019-05-21",
     passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
-    is_post: false,
+    is_post: true,
     lock: false,
     author: "Dong Yuanxin",
     share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
@@ -156,24 +156,67 @@
 </nav>
 <div id="site-process"></div>
     <main>
-      <div class="timeline">
-  <h2 class="timeline-title">系列: 技术相关</h2>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-06-16
+    </span>
+    
+      <span>
+        | <a href="/categories/技术相关/"><i class="fa fa-bookmark"></i>技术相关</a>
+      </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    过程中的一些经验
+  </h1>
   
-    
-      <h3 class="timeline-subtitle">2019</h3>
-    
-    <div class="timeline-item">
-      <time>2019-06-16</time>
-      <a target="_self" href="/2019/06/16/过程中的一些经验/">过程中的一些经验</a>
-    </div>
+  <article class="passage-article">
+    <p>#### </p>
+<h4 id="业务层代码不要裸奔"><a href="#业务层代码不要裸奔" class="headerlink" title="业务层代码不要裸奔"></a>业务层代码不要裸奔</h4><ul>
+<li>最佳做法：代码全部包入 try catch 中，如下示例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> List&lt;ResServerForDeviceInsertFaceDTO&gt; <span class="title">faceAdd</span><span class="params">()</span> <span class="keyword">throws</span> PendingException </span>&#123;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//业务代码 ....</span></span><br><span class="line">     &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"><span class="comment">//发生异常时，打印对应日志</span></span><br><span class="line">         TransactionLogger.debug(<span class="string">"++++++ServerForDeviceFaceServiceImpl --&gt; faceAdd --&gt; 出现了错误:"</span> + e);</span><br><span class="line"><span class="comment">//如果是自定义的异常 直接返回</span></span><br><span class="line">         <span class="keyword">if</span> (e <span class="keyword">instanceof</span> PendingException) &#123;</span><br><span class="line">             <span class="keyword">throw</span> (PendingException) e;</span><br><span class="line">         &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">//如果不是自定义的异常，为了用户体验，返回一个较为友好的结果</span></span><br><span class="line">             <span class="keyword">throw</span> <span class="keyword">new</span> PendingException(ResCode.K1048);</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#业务层代码不要裸奔"><span class="toc-text">业务层代码不要裸奔</span></a></li></ol>
+  </div>
+</aside>
   
+    <aside class="passage-copyright">
+      <div>本文作者: 逸超</div>
+      
+        <div>
+          原文链接: 
+          <a href target="_blank">http://yoursite.com/2019/06/16/过程中的一些经验/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/tags/Java/"><i class="fa fa-tags"></i>Java</a>
     
-    <div class="timeline-item">
-      <time>2019-06-16</time>
-      <a target="_self" href="/2019/06/16/SpringBoot自定义注解/"></a>
     </div>
   
 </div>
+
     </main>
     
     <div class="site-footer-wrapper">
@@ -281,12 +324,12 @@
     <a href="javascript:void(0);" data-enable="false">
       <i class="fa fa-arrow-left"></i>
     </a>
-    <a href="javascript:void(0);" data-enable="false">
+    <a href="/2019/06/16/SpringBoot自定义注解/" data-enable="true">
       <i class="fa fa-arrow-right"></i>
     </a>
   </div>
   <div class="bottom-bar-right">
-    <a href="javascript:void(0);" data-enable="false" id="site-toc-show-btn">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
       <i class="fa fa-bars"></i>
     </a>
     
