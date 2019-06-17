@@ -6,12 +6,12 @@
   <meta name="author" content="Dong Yuanxin">
   
   
-  <title>归档: 2019/6 | my-home</title>
+  <title>数据库 | my-home</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="Hexo, Theme-AD">
+    <meta name="keywords" content="MySql,数据库事项,">
   
 
   
@@ -38,7 +38,7 @@
     welcome: {"enable":false,"interval":30},
     start_time: "2019-05-21",
     passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
-    is_post: false,
+    is_post: true,
     lock: false,
     author: "Dong Yuanxin",
     share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
@@ -156,42 +156,106 @@
 </nav>
 <div id="site-process"></div>
     <main>
-      <div class="timeline">
-  <h2 class="timeline-title">归档: 6篇</h2>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-06-17
+    </span>
+    
+      <span>
+        | <a href="/categories/MySql/"><i class="fa fa-bookmark"></i>MySql</a>
+      </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    数据库
+  </h1>
   
-    
-      <h3 class="timeline-subtitle">2019</h3>
-    
-    <div class="timeline-item">
-      <time>2019-06-17</time>
-      <a target="_self" href="/2019/06/17/数据库/">数据库</a>
-    </div>
+  <article class="passage-article">
+    <h5 id="数据库的ACID特性"><a href="#数据库的ACID特性" class="headerlink" title="数据库的ACID特性"></a>数据库的ACID特性</h5><ul>
+<li>Automicity – 原子性<ul>
+<li>独立的操作单元，要么全部都是，要么全部都不是</li>
+</ul>
+</li>
+<li>Consistency – 一致性<ul>
+<li>事务必须始终保证其一致性，不管单元时间内 事务并发数多少<ul>
+<li>一个操作触发辅助操作(级联，触发器等)，这些也必须成功，否则失败</li>
+<li>如果系统由多个节点组成，一致性规定所有的变化必须传播到所有的节点（主从复制），如果从站节点是异步更新，那么需要系统成为“最终一致性”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Isolation – 隔离性<ul>
+<li>一个失败的事务不应该破坏系统的状态<ul>
+<li>大多常用到悲观锁或乐观锁来实现<ul>
+<li>乐观锁可以用多种方式实现<ul>
+<li>建立一个所有实体类 必须继承的 实体父类，其中拥有乐观锁，每一次的写入都必须比对，乐观锁如果一致，放行并将乐观锁+1，否则失败.</li>
+<li>存放位置也可以多地方，数据库也可，redis这类缓存也可等等。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Durability – 持久性<ul>
+<li>一个成功的事务将永久化的改变系统的状态，所以在它结束之前，所有导致状态的变化都会记录在一个持久的事务日志中</li>
+</ul>
+</li>
+</ul>
+<h5 id="数据库隔离级别"><a href="#数据库隔离级别" class="headerlink" title="数据库隔离级别"></a>数据库隔离级别</h5><p>级别从上至下 – 增大</p>
+<p>脏读 – 可重复读 – 幻读</p>
+<blockquote>
+<p><strong>READ_UNCOMMITED</strong> – 三种问题都存在（不推荐使用）</p>
+<p>​    –事务中的修改，即使没有提交，其他事务也可以看到，会引起脏读</p>
+<p><strong>READ_COMMITED</strong> – 解决了脏读（默认级别）其余两种未解决</p>
+<p>​    –指一个事务的开始，只能够看到已经完成的事务的结果，对正在执行的事务，无法被其他事务看到</p>
+<p><strong>REPETABLE_READ</strong> – 解决了脏读，可重复读，未解决幻读</p>
+<p><strong>SERIALIZABLE</strong> – 最高级别 解决了所有问题 但是性能极低（大量用到锁机制）</p>
+<p>​    –最高隔离级别，通过强制事务串行操作，并加上大量锁机制实现了问题解决，但对应会导致大量的请求超时，因此性能会很低。</p>
+</blockquote>
+<p><img src="./images/数据库默认隔离级别.jpg" alt></p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#数据库的ACID特性"><span class="toc-text">数据库的ACID特性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#数据库隔离级别"><span class="toc-text">数据库隔离级别</span></a></li></ol>
+  </div>
+</aside>
   
-    
-    <div class="timeline-item">
-      <time>2019-06-16</time>
-      <a target="_self" href="/2019/06/16/过程中的一些经验/">过程中的一些经验</a>
-    </div>
+    <aside class="passage-copyright">
+      <div>本文作者: 逸超</div>
+      
+        <div>
+          原文链接: 
+          <a href target="_blank">http://yoursite.com/2019/06/17/数据库/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
   
-    
-    <div class="timeline-item">
-      <time>2019-06-16</time>
-      <a target="_self" href="/2019/06/16/SpringBoot自定义注解/"></a>
-    </div>
   
+    <div class="passage-tags">
+     
+      <a href="/tags/数据库事项/"><i class="fa fa-tags"></i>数据库事项</a>
     
-    <div class="timeline-item">
-      <time>2019-06-15</time>
-      <a target="_self" href="/2019/06/15/代码命名/">代码命名</a>
-    </div>
-  
-    
-    <div class="timeline-item">
-      <time>2019-06-14</time>
-      <a target="_self" href="/2019/06/14/2019-6-14日志/">2019-6-14日志</a>
     </div>
   
 </div>
+
     </main>
     
     <div class="site-footer-wrapper">
@@ -299,12 +363,12 @@
     <a href="javascript:void(0);" data-enable="false">
       <i class="fa fa-arrow-left"></i>
     </a>
-    <a href="javascript:void(0);" data-enable="false">
+    <a href="/2019/06/16/过程中的一些经验/" data-enable="true">
       <i class="fa fa-arrow-right"></i>
     </a>
   </div>
   <div class="bottom-bar-right">
-    <a href="javascript:void(0);" data-enable="false" id="site-toc-show-btn">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
       <i class="fa fa-bars"></i>
     </a>
     
